@@ -22,12 +22,16 @@ jobs:
         run: |
           ./mvnw --no-transfer-progress clean package -DskipTests -P prod
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3.1.1
+      - name: Docker Login
+        uses: docker/login-action@v2.0.0
         with:
-          name: dsdeliver
-          path: target
-  docker:
-    needs: build
-    uses: ./.github/workflows/build-and-publish-image.yml
-    secrets: inherit
+          username: lucianobrum
+          password: ${{ secrets.PWD_DOCKER_HUB }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v3.2.0
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: lucianobrum/dsdeliver:${{github.sha}}
