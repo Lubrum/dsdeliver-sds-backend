@@ -33,5 +33,5 @@ jobs:
 
   docker:
     needs: build
-    uses: ./.github/workflows/Docker.yml
+    uses: ./.github/workflows/build-and-publish-image.yml
     secrets: inherit
