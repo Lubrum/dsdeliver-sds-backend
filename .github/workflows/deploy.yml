@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-java@v3.10.0
         with:
           java-version: ${{ env.JAVA_VERSION }}
+          distribution: temurin
       - name: Maven Clean Package
         run: |
           ./mvnw --no-transfer-progress clean package -DskipTests -P prod
