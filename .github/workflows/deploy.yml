@@ -3,7 +3,7 @@ name: ds-deliver
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "CI/CD" ]
   pull_request:
     branches: [ "main" ]
 
