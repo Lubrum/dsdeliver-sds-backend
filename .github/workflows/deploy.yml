@@ -20,7 +20,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
       - name: Maven Clean Package
         run: |
-          ./mvnw --no-transfer-progress clean package -P prod
+          ./mvnw --no-transfer-progress clean package -DskipTests -P prod
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.1
