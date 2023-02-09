@@ -36,3 +36,18 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: lucianobrum/dsdeliver:${{github.ref_name}}, lucianobrum/dsdeliver:latest
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy aws ec2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            whoami
+            ls -lhta
+            docker info
+            docker compose -v
