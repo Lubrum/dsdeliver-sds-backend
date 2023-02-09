@@ -2,9 +2,7 @@ version: '3'
 
 services:
   app:
-    image: 'lucianobrum/dsdeliver:1.2'
-    build:
-      context: .
+    image: 'lucianobrum/dsdeliver:latest'
     container_name: app
     depends_on:
       - db

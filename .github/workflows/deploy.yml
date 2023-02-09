@@ -35,4 +35,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: lucianobrum/dsdeliver:${{github.ref_name}}
+          tags: lucianobrum/dsdeliver:${{github.ref_name}}, lucianobrum/dsdeliver:latest
