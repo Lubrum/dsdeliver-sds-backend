@@ -4,19 +4,14 @@ Este é o projeto backend do sistema para realização de pedidos e entregas de 
 
 Tecnologia utilizada:
 
-- Java 17
+- Java 19
 
-- Spring Boot
+- Spring Boot 3
 
 # Pré-requisitos do projeto
 
-- Java JDK 17;
-- Maven (Gerenciamento de dependências);
-- STS (IDE para desenvolvimento);
-- Postman (Teste de APIs);
-- Postgresql e pgAdmin (Banco de dados SQL e UI para Postgres);
-- Heroku CLI;
-
+- docker;
+- docker compose;
 
 # Modelo conceitual
 
@@ -27,45 +22,32 @@ Tecnologia utilizada:
 
 ![Image](https://raw.githubusercontent.com/Lubrum/dsdeliver-sds2/master/assets/camadas.png "Padrão camadas")
 
-# Comandos para o Deploy no Heroku
+# Execução do projeto
 
-[Tutorial completo de deploy com Heroku.](https://devcenter.heroku.com/articles/git)
-
-
-## Pre-requisitos: 
-
-- Git;
-- Heroku CLI;
-
-
-## Rastrear (track) o app com o Git.
+Na pasta raíz do projeto:
 
 ```bash
-cd myapp
-git init
-git add .
-git commit -m "My first commit"
+docker compose up -d
 ```
 
-## Criar um 'Heroku remote'.
+O comando acima executa o projeto java em si e o banco de dados Postgres inicializado com dados fictícios. 
 
-- Para um novo app no Heroku:
+Para parar a execução
 
 ```bash
-heroku create
-git remote -v
+docker compose down
 ```
 
-- Para um app existente no Heroku:
+# Deploy
 
-```bash
-heroku git:remote -a [heroku_app_name]
-```
+Este projeto está com um mecanismo de CI/CD configurado para realizar o deploy em uma instância EC2 da Amazon a cada commit feito.
 
-## Para realizar o deploy no Heroku:
+Para modificar a lógica de CI/CD, editar o arquivo em .github/workflows/deploy.yml
 
-```bash
-git push heroku main
-```
+Existem alguns secrets utilizados que devem ser configurados no repositório:
 
-Link da API: https://luciano-sds2.herokuapp.com/
+- HOST: IP ou domínio da instância EC2;
+- KEY: chave privada de acesso ssh à instância EC2;
+- PORT: socket de acesso à instância EC2;
+- PWD_DOCKER_HUB: senha ou token da conta no Docker Hub;
+- USERNAME: usuário da instância EC2;
