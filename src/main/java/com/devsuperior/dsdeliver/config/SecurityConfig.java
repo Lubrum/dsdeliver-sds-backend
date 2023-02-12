@@ -30,14 +30,14 @@ public class SecurityConfig {
 
 		http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().anyRequest().permitAll();
+		http.authorizeHttpRequests().anyRequest().permitAll();
 
 		return http.build();
 	}
 
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+		return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
 	}
 
 	@Bean
