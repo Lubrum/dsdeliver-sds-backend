@@ -42,6 +42,8 @@ docker compose down
 
 Este projeto está com um mecanismo de CI/CD configurado para realizar o deploy em uma instância EC2 da Amazon a cada commit feito.
 
+A instância precisa ter instalado nela o 'docker' e o 'docker compose'.
+
 Para modificar a lógica de CI/CD, editar o arquivo em .github/workflows/deploy.yml
 
 Existem alguns secrets utilizados que devem ser configurados no repositório:
