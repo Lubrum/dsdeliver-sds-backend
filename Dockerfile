@@ -10,9 +10,9 @@ RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/reposito
     mkdir /app/lib && \
     mkdir /app/META-INF
 
-COPY ./target/dsdeliver-0.0.1.jar /app/jar/
+COPY ./target/dsdeliver-*.jar /app/jar/
 
-RUN unzip /app/jar/dsdeliver-0.0.1.jar -d /app/jar/ && \
+RUN unzip /app/jar/dsdeliver-*.jar -d /app/jar/ && \
     pwd && ls -lht /app/jar && find && \
     mv -v /app/jar/BOOT-INF/lib/* /app/lib && \
     mv -v /app/jar/META-INF/* /app/META-INF && \
