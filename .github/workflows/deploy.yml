@@ -59,6 +59,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
+            cd /home/ubuntu/dsdeliver
             sudo docker compose down
             sudo docker system prune -a -f
             sudo docker compose build
