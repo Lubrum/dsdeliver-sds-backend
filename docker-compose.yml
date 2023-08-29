@@ -18,8 +18,6 @@ services:
 
   app:
     image: 'lucianobrum/dsdeliver:latest'
-    build:
-      context: .
     container_name: app
     restart: always
     depends_on:

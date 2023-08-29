@@ -26,13 +26,24 @@ Tecnologia utilizada:
 
 Na pasta raíz do projeto:
 
+Passo 1: gerar artefato do projeto, executando o 'package' no IntelliJ, ou via CLI o comando abaixo (requer maven instalado na máquina):
+
+```bash
+mvn clean package -DskipTests
+```
+Passo 2: cria imagem local da aplicação spring boot
+
+```bash
+docker build -t lucianobrum/dsdeliver .
+```
+
+Passo 3: executa o projeto java em si junto com Nginx e o banco de dados Postgres inicializado com dados fictícios.
+
 ```bash
 docker compose up -d
 ```
 
-O comando acima executa o projeto java em si e o banco de dados Postgres inicializado com dados fictícios. 
-
-Para parar a execução
+## Para parar a execução
 
 ```bash
 docker compose down
