@@ -4,7 +4,7 @@ Este é o projeto backend do sistema para realização de pedidos e entregas de 
 
 Tecnologia utilizada:
 
-- Java 19
+- Java 20
 
 - Spring Boot 3
 

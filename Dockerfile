@@ -1,4 +1,4 @@
-FROM eclipse-temurin:19.0.1_10-jre-alpine@sha256:a75ea64f676041562cd7d3a54a9764bbfb357b2bf1bebf46e2af73e62d32e36c
+FROM eclipse-temurin:20.0.2_9-jre-alpine@sha256:987af6a7e762cf950598c8f5ebaad9fff9dcf220fc8a3bddb9fd55b49b48a3e4
 
 WORKDIR /app
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
@@ -10,9 +10,9 @@ RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/reposito
     mkdir /app/lib && \
     mkdir /app/META-INF
 
-COPY ./target/dsdeliver-0.0.1.jar /app/jar/
+COPY ./target/dsdeliver-*.jar /app/jar/
 
-RUN unzip /app/jar/dsdeliver-0.0.1.jar -d /app/jar/ && \
+RUN unzip /app/jar/dsdeliver-*.jar -d /app/jar/ && \
     pwd && ls -lht /app/jar && find && \
     mv -v /app/jar/BOOT-INF/lib/* /app/lib && \
     mv -v /app/jar/META-INF/* /app/META-INF && \

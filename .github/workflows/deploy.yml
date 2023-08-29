@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
 
 env:
-  JAVA_VERSION: 19
+  JAVA_VERSION: 20
 
 jobs:
   build:
@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           source: "./docker-compose.yml"
-          target: "/home/ubuntu"
+          target: "/home/ubuntu/dsdeliver"
   deploy:
     needs: build
     runs-on: ubuntu-latest

@@ -10,7 +10,7 @@ services:
       - "443:443"
     hostname: nginx
     volumes:
-      - /etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - app
     healthcheck:
@@ -18,6 +18,8 @@ services:
 
   app:
     image: 'lucianobrum/dsdeliver:latest'
+    build:
+      context: .
     container_name: app
     restart: always
     depends_on:
@@ -30,7 +32,7 @@ services:
       - "8200"
 
   db:
-    image: 'postgres:15.1@sha256:1629bc36c63077ef0ef8b6ea7ff1d601a5211019f15f6b3fd03084788dfaae55'
+    image: postgres:15.1@sha256:1629bc36c63077ef0ef8b6ea7ff1d601a5211019f15f6b3fd03084788dfaae55
     container_name: db
     restart: always
     volumes:

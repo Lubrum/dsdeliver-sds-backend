@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="build" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="package" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings">
@@ -8,7 +8,7 @@
           <option name="environmentProperties">
             <map />
           </option>
-          <option name="jreName" value="#USE_PROJECT_JDK" />
+          <option name="jreName" value="zulu-20" />
           <option name="mavenProperties">
             <map />
           </option>
@@ -20,6 +20,7 @@
       </option>
       <option name="myRunnerParameters">
         <MavenRunnerParameters>
+          <option name="cmdOptions" />
           <option name="profiles">
             <set />
           </option>
@@ -27,11 +28,17 @@
             <list>
               <option value="clean" />
               <option value="package" />
+              <option value="-DskipTests" />
+              <option value="-P" />
+              <option value="prod" />
             </list>
           </option>
           <option name="pomFileName" />
           <option name="profilesMap">
             <map />
+          </option>
+          <option name="projectsCmdOptionValues">
+            <list />
           </option>
           <option name="resolveToWorkspace" value="false" />
           <option name="workingDirPath" value="$PROJECT_DIR$" />
