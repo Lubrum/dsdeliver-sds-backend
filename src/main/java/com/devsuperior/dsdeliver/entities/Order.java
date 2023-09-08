@@ -1,134 +1,125 @@
 package com.devsuperior.dsdeliver.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
 
-	@Serial
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String address;
-	private Double latitude;
-	private Double longitude;
-	private Instant moment;
-	private OrderStatus status;
-	
-	@ManyToMany
-	@JoinTable(name = "tb_order_product",
-		joinColumns = @JoinColumn(name = "order_id"),
-		inverseJoinColumns = @JoinColumn(name = "product_id")
-	)
-	private final Set <Product> products = new HashSet<>();
-	
-	public Order() {
-	}
+    @Serial
+    private static final long serialVersionUID = 1L;
+    @ManyToMany
+    @JoinTable(name = "tb_order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private final Set<Product> products = new HashSet<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String address;
+    private Double latitude;
+    private Double longitude;
+    private Instant moment;
+    private OrderStatus status;
 
-	public Order(Long id, String adress, Double latitude, Double longitude, Instant moment, OrderStatus status) {
-		super();
-		this.id = id;
-		this.address = adress;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.moment = moment;
-		this.status = status;
-	}
+    public Order() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Order(Long id, String adress, Double latitude, Double longitude, Instant moment, OrderStatus status) {
+        super();
+        this.id = id;
+        this.address = adress;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.moment = moment;
+        this.status = status;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getAdress() {
-		return address;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setAdress(String adress) {
-		this.address = adress;
-	}
+    public String getAdress() {
+        return address;
+    }
 
-	public Double getLatitude() {
-		return latitude;
-	}
+    public void setAdress(String adress) {
+        this.address = adress;
+    }
 
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
+    public Double getLatitude() {
+        return latitude;
+    }
 
-	public Double getLongitude() {
-		return longitude;
-	}
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
 
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
-	}
+    public Double getLongitude() {
+        return longitude;
+    }
 
-	public Instant getMoment() {
-		return moment;
-	}
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
 
-	public void setMoment(Instant moment) {
-		this.moment = moment;
-	}
+    public Instant getMoment() {
+        return moment;
+    }
 
-	public OrderStatus getStatus() {
-		return status;
-	}
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
 
-	public void setStatus(OrderStatus status) {
-		this.status = status;
-	}
+    public OrderStatus getStatus() {
+        return status;
+    }
 
-	public Double getTotal() {
-		double sum = 0.0;
-		sum = products.stream().mapToDouble(Product::getPrice).sum();
-		return sum;
-	}
-	
-	public Set<Product> getProducts() {
-		return products;
-	}
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public Double getTotal() {
+        double sum = 0.0;
+        sum = products.stream().mapToDouble(Product::getPrice).sum();
+        return sum;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Order other = (Order) obj;
-		if (id == null) {
-			return other.id == null;
-		} else return id.equals(other.id);
-	}
-	
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Order other = (Order) obj;
+        if (id == null) {
+            return other.id == null;
+        } else return id.equals(other.id);
+    }
+
 }

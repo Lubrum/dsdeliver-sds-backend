@@ -1,5 +1,8 @@
 package com.devsuperior.dsdeliver.dto;
 
+import com.devsuperior.dsdeliver.entities.Order;
+import com.devsuperior.dsdeliver.entities.OrderStatus;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
@@ -7,106 +10,103 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.devsuperior.dsdeliver.entities.Order;
-import com.devsuperior.dsdeliver.entities.OrderStatus;
-
 public class OrderDTO implements Serializable {
 
-	@Serial
-	private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-	private Long id;
-	private String address;
-	private Double latitude;
-	private Double longitude;
-	private Instant moment;
-	private OrderStatus status;
-	private Double total;
-	
-	private List<ProductDTO> products = new ArrayList<>();
-	
-	public OrderDTO() {
-	}
+    private Long id;
+    private String address;
+    private Double latitude;
+    private Double longitude;
+    private Instant moment;
+    private OrderStatus status;
+    private Double total;
 
-	public OrderDTO(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status, Double total) {
-		this.id = id;
-		this.address = address;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.moment = moment;
-		this.status = status;
-		this.total = total;
-	}
-	
-	public OrderDTO(Order entity) {
-		id = entity.getId();
-		address = entity.getAdress();
-		latitude = entity.getLatitude();
-		longitude = entity.getLongitude();
-		moment = entity.getMoment();
-		status = entity.getStatus();
-		total = entity.getTotal();
-		products = entity.getProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
-	}
+    private List<ProductDTO> products = new ArrayList<>();
 
-	public Long getId() {
-		return id;
-	}
+    public OrderDTO() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public OrderDTO(Long id, String address, Double latitude, Double longitude, Instant moment, OrderStatus status, Double total) {
+        this.id = id;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.moment = moment;
+        this.status = status;
+        this.total = total;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public OrderDTO(Order entity) {
+        id = entity.getId();
+        address = entity.getAdress();
+        latitude = entity.getLatitude();
+        longitude = entity.getLongitude();
+        moment = entity.getMoment();
+        status = entity.getStatus();
+        total = entity.getTotal();
+        products = entity.getProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Double getLatitude() {
-		return latitude;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public Double getLongitude() {
-		return longitude;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
-	}
+    public Double getLatitude() {
+        return latitude;
+    }
 
-	public Instant getMoment() {
-		return moment;
-	}
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
 
-	public void setMoment(Instant moment) {
-		this.moment = moment;
-	}
+    public Double getLongitude() {
+        return longitude;
+    }
 
-	public OrderStatus getStatus() {
-		return status;
-	}
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
 
-	public void setStatus(OrderStatus status) {
-		this.status = status;
-	}
-	
-	public Double getTotal() {
-		return total;
-	}
+    public Instant getMoment() {
+        return moment;
+    }
 
-	public void setTotal(Double total) {
-		this.total = total;
-	}
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
 
-	public List<ProductDTO> getProducts() {
-		return products;
-	}
-	
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public List<ProductDTO> getProducts() {
+        return products;
+    }
+
 }

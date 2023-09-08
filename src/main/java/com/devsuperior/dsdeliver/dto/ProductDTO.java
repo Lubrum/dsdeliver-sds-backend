@@ -1,78 +1,78 @@
 package com.devsuperior.dsdeliver.dto;
 
+import com.devsuperior.dsdeliver.entities.Product;
+
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.devsuperior.dsdeliver.entities.Product;
-
 public class ProductDTO implements Serializable {
 
-	@Serial
-	private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-	private Long id;
-	private String name;
-	private Double price;
-	private String description;
-	private String imageUri;
-	
-	public ProductDTO() {
-	}
+    private Long id;
+    private String name;
+    private Double price;
+    private String description;
+    private String imageUri;
 
-	public ProductDTO(Long id, String name, Double price, String description, String imageUri) {
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.description = description;
-		this.imageUri = imageUri;
-	}
-	
-	public ProductDTO(Product entity) {
-		id = entity.getId();
-		name = entity.getName();
-		price = entity.getPrice();
-		description = entity.getDescription();
-		imageUri = entity.getImageUri();
-	}
+    public ProductDTO() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public ProductDTO(Long id, String name, Double price, String description, String imageUri) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.imageUri = imageUri;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public ProductDTO(Product entity) {
+        id = entity.getId();
+        name = entity.getName();
+        price = entity.getPrice();
+        description = entity.getDescription();
+        imageUri = entity.getImageUri();
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Double getPrice() {
-		return price;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-	public String getImageUri() {
-		return imageUri;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setImageUri(String imageUri) {
-		this.imageUri = imageUri;
-	}
-	
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
 }

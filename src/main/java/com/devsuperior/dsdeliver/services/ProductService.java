@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
 
-	@Autowired
-	private ProductRepository repository;
-	
-	@Transactional(readOnly = true)
-	public List<ProductDTO> findAll() {
-		final var list = repository.findAllByOrderByNameAsc();
-		return list.stream().map(ProductDTO::new).collect(Collectors.toList());
-	}
-	
+    @Autowired
+    private ProductRepository repository;
+
+    @Transactional(readOnly = true)
+    public List<ProductDTO> findAll() {
+        final var list = repository.findAllByOrderByNameAsc();
+        return list.stream().map(ProductDTO::new).collect(Collectors.toList());
+    }
+
 }
