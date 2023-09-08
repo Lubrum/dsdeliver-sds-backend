@@ -55,6 +55,8 @@ Este projeto está com um mecanismo de CI/CD configurado para realizar o deploy 
 
 A instância precisa ter instalado nela o 'docker' e o 'docker compose'.
 
+Ainda, na pasta /home/ubuntu é requerido a existência do diretório **dsdeliver**, e dentro dela o diretório nginx/conf.d. Dentro desse diretório do nginx é necessário ter um arquivo semelhante ao **default.conf** deste projeto, porém com a URL adaptada para o ambiente de produção. No caso do EC2 é algo como http://ec2-IP-DA-INSTANCIA.REGIAO-DA-INSTANCIA.compute.amazonaws.com/.
+
 Para modificar a lógica de CI/CD, editar o arquivo em .github/workflows/deploy.yml
 
 Existem alguns secrets utilizados que devem ser configurados no repositório:
