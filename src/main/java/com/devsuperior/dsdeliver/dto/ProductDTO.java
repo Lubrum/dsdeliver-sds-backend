@@ -4,6 +4,7 @@ import com.devsuperior.dsdeliver.entities.Product;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ProductDTO implements Serializable {
 
@@ -75,4 +76,16 @@ public class ProductDTO implements Serializable {
         this.imageUri = imageUri;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductDTO that = (ProductDTO) o;
+        return Objects.equals(name, that.name) && Objects.equals(price, that.price) && Objects.equals(description, that.description) && Objects.equals(imageUri, that.imageUri);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, description, imageUri);
+    }
 }

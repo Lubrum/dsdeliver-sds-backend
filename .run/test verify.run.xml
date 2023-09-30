@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="package" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="test verify" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings">
@@ -14,7 +14,7 @@
           </option>
           <option name="passParentEnv" value="true" />
           <option name="runMavenInBackground" value="true" />
-          <option name="skipTests" value="true" />
+          <option name="skipTests" value="false" />
           <option name="vmOptions" value="" />
         </MavenRunnerSettings>
       </option>
@@ -27,8 +27,10 @@
           <option name="goals">
             <list>
               <option value="clean" />
-              <option value="package" />
-              <option value="-DskipTests" />
+              <option value="verify" />
+              <option value="-Dspring.profiles.active=test" />
+              <option value="-DDB_TEST_USERNAME=root" />
+              <option value="-DDB_TEST_PASSWORD=123" />
               <option value="-P" />
               <option value="prod" />
             </list>

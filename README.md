@@ -1,6 +1,6 @@
 # Semana Dev Superior 2.0 - DSDelivery
 
-Este é o projeto backend do sistema para realização de pedidos e entregas de encomendas de um restaurante. 
+Este é o projeto backend do sistema para realização de pedidos e entregas de encomendas de um restaurante desenvolvido na semana Dev Superior 2.0, ministrado pelo prof. Nélio Lopes. Este projeto abarca melhorias adicionais feitas como inclusão do Docker, atualização para o Spring Boot 3, Java 20 e outros. 
 
 Tecnologia utilizada:
 

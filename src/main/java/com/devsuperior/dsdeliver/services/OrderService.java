@@ -23,7 +23,7 @@ public class OrderService {
     private ProductRepository productRepository;
 
     @Transactional(readOnly = true)
-    public List<OrderDTO> findAll() {
+    public List<OrderDTO> findOrdersPendingWithProducts() {
         final var list = repository.findOrdersWithProducts();
         return list.stream().map(OrderDTO::new).collect(Collectors.toList());
     }
@@ -31,6 +31,9 @@ public class OrderService {
     @Transactional
     public OrderDTO insert(final OrderDTO dto) {
         var order = new Order(null, dto.getAddress(), dto.getLatitude(), dto.getLongitude(), Instant.now(), OrderStatus.PENDING);
+        if (dto.getProducts().isEmpty()) {
+            throw new IllegalStateException("Obrigatório pelo menos um produto no pedido.");
+        }
         for (final var p : dto.getProducts()) {
             final var product = productRepository.getReferenceById(p.getId());
             order.getProducts().add(product);

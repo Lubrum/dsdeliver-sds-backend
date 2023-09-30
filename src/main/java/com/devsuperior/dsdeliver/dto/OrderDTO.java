@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class OrderDTO implements Serializable {
@@ -109,4 +110,16 @@ public class OrderDTO implements Serializable {
         return products;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderDTO orderDTO = (OrderDTO) o;
+        return Objects.equals(address, orderDTO.address) && Objects.equals(latitude, orderDTO.latitude) && Objects.equals(longitude, orderDTO.longitude) && status == orderDTO.status && Objects.equals(total, orderDTO.total) && Objects.equals(products, orderDTO.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, latitude, longitude, status, total, products);
+    }
 }

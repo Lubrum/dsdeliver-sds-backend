@@ -18,15 +18,15 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<OrderDTO>> findAll() {
-        final var list = service.findAll();
+        final var list = service.findOrdersPendingWithProducts();
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
     public ResponseEntity<OrderDTO> insert(@RequestBody OrderDTO dto) {
-        dto = service.insert(dto);
-        final var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
+        OrderDTO dtoSaved = service.insert(dto);
+        final var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dtoSaved.getId()).toUri();
+        return ResponseEntity.created(uri).body(dtoSaved);
     }
 
     @PutMapping("/{id}/delivered")
