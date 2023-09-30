@@ -19,17 +19,35 @@ jobs:
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: temurin
-      - name: Maven Clean Package
+
+      - name: Build and Test with Maven
+        run: |
+          ./mvnw clean verify -Dspring.profiles.active=test
+
+      - name: Check Test Status
+        id: check-test-status
+        run: |
+          if grep -q "BUILD FAILURE" target/surefire-reports/*.txt; then
+            echo "Tests failed."
+            exit 1
+          else
+            echo "Tests passed."
+          fi
+
+      - name: Build artifact
+        if: steps.check-test-status.outcome == 'success'
         run: |
           ./mvnw --no-transfer-progress clean package -DskipTests -P prod
 
       - name: Docker Login
+        if: steps.check-test-status.outcome == 'success'
         uses: docker/login-action@v2.1.0
         with:
           username: lucianobrum
           password: ${{ secrets.PWD_DOCKER_HUB }}
 
       - name: Build and push Docker images
+        if: steps.check-test-status.outcome == 'success'
         uses: docker/build-push-action@v4.0.0
         with:
           context: .
@@ -39,6 +57,7 @@ jobs:
           
       - uses: actions/checkout@master
       - name: copy file via ssh password
+        if: steps.check-test-status.outcome == 'success'
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}

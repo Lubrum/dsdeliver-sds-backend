@@ -29,10 +29,6 @@
               <option value="clean" />
               <option value="verify" />
               <option value="-Dspring.profiles.active=test" />
-              <option value="-DDB_TEST_USERNAME=root" />
-              <option value="-DDB_TEST_PASSWORD=123" />
-              <option value="-P" />
-              <option value="prod" />
             </list>
           </option>
           <option name="pomFileName" />
