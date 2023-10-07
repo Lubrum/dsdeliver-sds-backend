@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="test verify" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="build" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings">
         <MavenGeneralSettings>
@@ -32,7 +32,7 @@
           </option>
           <option name="passParentEnv" value="true" />
           <option name="runMavenInBackground" value="true" />
-          <option name="skipTests" value="false" />
+          <option name="skipTests" value="true" />
           <option name="vmOptions" value="" />
         </MavenRunnerSettings>
       </option>
@@ -45,8 +45,7 @@
           <option name="goals">
             <list>
               <option value="clean" />
-              <option value="verify" />
-              <option value="-Dspring.profiles.active=test" />
+              <option value="package" />
             </list>
           </option>
           <option name="pomFileName" />

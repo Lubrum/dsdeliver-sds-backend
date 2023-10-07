@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.23.3-alpine-slim@sha256:60a7532e3b954c902cb651aa29a2c757c495e11c264368fdf77b139985b923c6
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    hostname: nginx
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    healthcheck:
+      test: "exit 0"
+
+  app:
+    build:
+      context: .
+    image: 'lucianobrum/dsdeliver:latest'
+    container_name: app
+    restart: always
+    depends_on:
+      - db
+    hostname: dsdeliver
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/dsdeliver
+      - SPRING_PROFILES_ACTIVE=prod
+    expose:
+      - "8200"
+
+  db:
+    image: postgres:15.1@sha256:1629bc36c63077ef0ef8b6ea7ff1d601a5211019f15f6b3fd03084788dfaae55
+    container_name: db
+    restart: always
+    volumes:
+      - /var/dsdeliver/data:/var/lib/postgresql/data
+    hostname: postgres
+    environment:
+      - POSTGRES_USER=dsdeliver
+      - POSTGRES_PASSWORD=123
+    expose:
+      - "5432"
