@@ -1,10 +1,12 @@
 # Semana Dev Superior 2.0 - DSDelivery
 
-Este é o projeto backend do sistema para realização de pedidos e entregas de encomendas de um restaurante desenvolvido na semana Dev Superior 2.0, ministrado pelo prof. Nélio Lopes. Este projeto abarca melhorias adicionais feitas como inclusão do Docker, atualização para o Spring Boot 3, Java 20 e outros. 
+Este é o projeto backend do sistema para realização de pedidos e entregas de encomendas de um restaurante desenvolvido na semana Dev Superior 2.0, ministrado pelo prof. Nélio Lopes. 
+
+Este projeto abarca melhorias adicionais feitas como inclusão do Docker, atualização para o Spring Boot 3, Java 21 e outros. 
 
 Tecnologia utilizada:
 
-- Java 20
+- Java 21
 
 - Spring Boot 3
 
@@ -26,21 +28,8 @@ Tecnologia utilizada:
 
 Na pasta raíz do projeto:
 
-Passo 1: gerar artefato do projeto, executando o 'package' no IntelliJ, ou via CLI o comando abaixo (requer maven instalado na máquina):
-
 ```bash
-mvn clean package -DskipTests
-```
-Passo 2: cria imagem local da aplicação spring boot
-
-```bash
-docker build -t lucianobrum/dsdeliver .
-```
-
-Passo 3: executa o projeto java em si junto com Nginx e o banco de dados Postgres inicializado com dados fictícios.
-
-```bash
-docker compose up -d
+docker compose -f docker-compose-dev.yml up -d --build
 ```
 
 ## Para parar a execução
@@ -55,7 +44,9 @@ Este projeto está com um mecanismo de CI/CD configurado para realizar o deploy 
 
 A instância precisa ter instalado nela o 'docker' e o 'docker compose'.
 
-Ainda, na pasta /home/ubuntu é requerido a existência do diretório **dsdeliver**, e dentro dela o diretório nginx/conf.d. Dentro desse diretório do nginx é necessário ter um arquivo semelhante ao **default.conf** deste projeto, porém com a URL adaptada para o ambiente de produção. No caso do EC2 é algo como http://ec2-IP-DA-INSTANCIA.REGIAO-DA-INSTANCIA.compute.amazonaws.com/.
+Ainda, na pasta /home/ubuntu é requerido a existência do diretório **dsdeliver**, e dentro dela o diretório nginx/conf.d. 
+
+Dentro desse diretório do nginx é necessário ter um arquivo semelhante ao **default.conf** deste projeto, porém com a URL adaptada para o ambiente de produção. No caso do EC2 é algo como http://ec2-IP-DA-INSTANCIA.REGIAO-DA-INSTANCIA.compute.amazonaws.com/.
 
 Para modificar a lógica de CI/CD, editar o arquivo em .github/workflows/deploy.yml
 
