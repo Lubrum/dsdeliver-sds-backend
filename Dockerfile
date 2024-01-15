@@ -1,4 +1,4 @@
-FROM eclipse-temurin:20.0.2_9-jre-alpine@sha256:987af6a7e762cf950598c8f5ebaad9fff9dcf220fc8a3bddb9fd55b49b48a3e4
+FROM eclipse-temurin:21.0.1_12-jre-alpine@sha256:98963ed09c4fd82e128c6cc9e64d71798239b824164276626d79b8f9e666ac0e
 
 WORKDIR /app
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
