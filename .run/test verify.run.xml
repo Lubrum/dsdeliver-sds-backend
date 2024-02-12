@@ -9,13 +9,15 @@
           <option name="failureBehavior" value="NOT_SET" />
           <option name="localRepository" value="" />
           <option name="mavenHome" value="Use Maven wrapper" />
+          <option name="mavenHomeType">
+            <MavenHomeType />
+          </option>
           <option name="nonRecursive" value="false" />
           <option name="outputLevel" value="INFO" />
           <option name="printErrorStackTraces" value="false" />
           <option name="showDialogWithAdvancedSettings" value="false" />
           <option name="threads" />
           <option name="useMavenConfig" value="true" />
-          <option name="usePluginRegistry" value="false" />
           <option name="userSettingsFile" value="" />
           <option name="workOffline" value="false" />
         </MavenGeneralSettings>
@@ -26,7 +28,7 @@
           <option name="environmentProperties">
             <map />
           </option>
-          <option name="jreName" value="zulu-20" />
+          <option name="jreName" value="21" />
           <option name="mavenProperties">
             <map />
           </option>
@@ -49,6 +51,7 @@
               <option value="-Dspring.profiles.active=test" />
             </list>
           </option>
+          <option name="multimoduleDir" />
           <option name="pomFileName" />
           <option name="profilesMap">
             <map />
